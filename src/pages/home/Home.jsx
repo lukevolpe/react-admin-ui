@@ -2,7 +2,7 @@ import Chart from '../../components/chart/Chart';
 import FeaturedChart from '../../components/featuredChart/FeaturedChart';
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
-import Table from '../../components/table/Table';
+import TableData from '../../components/table/Table';
 import Widget from '../../components/widget/Widget';
 import './home.scss';
 
@@ -20,11 +20,11 @@ const Home = () => {
         </div>
         <div className='charts'>
           <FeaturedChart />
-          <Chart />
+          <Chart aspect={2 / 1} title='Last 6 months (Revenue)' />
         </div>
         <div className='listContainer'>
           <div className='listTitle'>Latest Transactions</div>
-          <Table />
+          <TableData />
         </div>
       </div>
     </div>

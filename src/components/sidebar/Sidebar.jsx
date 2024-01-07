@@ -11,30 +11,39 @@ import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className='top'>
-        <span className='logo'>FoxAdminUI</span>
+        <Link to='/' style={{ textDecoration: 'none' }}>
+          <span className='logo'>FoxAdminUI</span>
+        </Link>
       </div>
       <hr />
       <div className='center'>
         <ul>
           <p className='title'>MAIN</p>
-          <li>
-            <DashboardIcon className='icon' />
-            <span>Dashboard</span>
-          </li>
+          <Link to='/' style={{ textDecoration: 'none' }}>
+            <li>
+              <DashboardIcon className='icon' />
+              <span>Dashboard</span>
+            </li>
+          </Link>
           <p className='title'>LISTS</p>
-          <li>
-            <PeopleIcon className='icon' />
-            <span>Users</span>
-          </li>
-          <li>
-            <InventoryIcon className='icon' />
-            <span>Products</span>
-          </li>
+          <Link to='/users' style={{ textDecoration: 'none' }}>
+            <li>
+              <PeopleIcon className='icon' />
+              <span>Users</span>
+            </li>
+          </Link>
+          <Link to='/products' style={{ textDecoration: 'none' }}>
+            <li>
+              <InventoryIcon className='icon' />
+              <span>Products</span>
+            </li>
+          </Link>
           <li>
             <ShoppingCartIcon className='icon' />
             <span>Orders</span>
