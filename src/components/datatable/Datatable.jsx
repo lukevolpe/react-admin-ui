@@ -1,14 +1,29 @@
 import './datatable.scss';
 import { DataGrid } from '@mui/x-data-grid';
 import { userColumns, userRows } from '../../datatablesource';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import useFetch from '../../hooks/useFetch.js';
+import axios from 'axios';
 
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+  const location = useLocation();
+  const path = location.pathname.split('/'[1]);
+  const [list, setList] = useState([]);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  const { data, loading, error } = useFetch(`/api/${path}`);
+
+  useEffect(() => {
+    setList(data);
+  }, [data]);
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/${path}/${id}`);
+      setList(list.filter((item) => item._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const actionColumn = [
@@ -16,7 +31,7 @@ const Datatable = () => {
       field: 'action',
       headerName: 'Action',
       width: 200,
-      renderCell: () => {
+      renderCell: (params) => {
         return (
           <div className='cellAction'>
             <Link to='/users/test' style={{ textDecoration: 'none' }}>
@@ -24,7 +39,7 @@ const Datatable = () => {
             </Link>
             <div
               className='deleteButton'
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             >
               Delete
             </div>
@@ -44,7 +59,7 @@ const Datatable = () => {
       </div>
       <DataGrid
         className='datagrid'
-        rows={data}
+        rows={list}
         columns={userColumns.concat(actionColumn)}
         initialState={{
           pagination: {
@@ -53,6 +68,7 @@ const Datatable = () => {
         }}
         pageSizeOptions={[5, 10, 15, 20, 25]}
         checkboxSelection
+        getRowId={(row) => row._id}
       />
     </div>
   );

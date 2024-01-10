@@ -42,47 +42,18 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
-          <Link to='/products' style={{ textDecoration: 'none' }}>
+          <Link to='/hotels' style={{ textDecoration: 'none' }}>
             <li>
               <InventoryIcon className='icon' />
-              <span>Products</span>
+              <span>Hotels</span>
             </li>
           </Link>
-          <li>
-            <ShoppingCartIcon className='icon' />
-            <span>Orders</span>
-          </li>
-          <li>
-            <LocalShippingIcon className='icon' />
-            <span>Delivery</span>
-          </li>
-          <p className='title'>USEFUL LINKS</p>
-          <li>
-            <QueryStatsIcon className='icon' />
-            <span>Stats</span>
-          </li>
-          <li>
-            <NotificationsIcon className='icon' />
-            <span>Notifications</span>
-          </li>
-          <p className='title'>SERVICE</p>
-          <li>
-            <LocalHospitalIcon className='icon' />
-            <span>System Health</span>
-          </li>
-          <li>
-            <TextSnippetIcon className='icon' />
-            <span>Logs</span>
-          </li>
-          <li>
-            <SettingsIcon className='icon' />
-            <span>Settings</span>
-          </li>
-          <p className='title'>USER</p>
-          <li>
-            <AccountBoxIcon className='icon' />
-            <span>Profile</span>
-          </li>
+          <Link to='/rooms' style={{ textDecoration: 'none' }}>
+            <li>
+              <InventoryIcon className='icon' />
+              <span>Rooms</span>
+            </li>
+          </Link>
           <li>
             <LogoutIcon className='icon' />
             <span>Log out</span>
