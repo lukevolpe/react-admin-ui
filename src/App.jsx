@@ -10,6 +10,8 @@ import { useContext } from 'react';
 import { DarkModeContext } from './context/DarkModeContext.jsx';
 import { AuthContext } from './context/AuthContext.jsx';
 import { hotelColumns, roomColumns, userColumns } from './datatablesource.jsx';
+import NewHotel from './pages/newHotel/NewHotel.jsx';
+import NewRoom from './pages/newRoom/NewRoom.jsx';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -88,7 +90,7 @@ function App() {
                 path='new'
                 element={
                   <ProtectedRoute>
-                    <New inputs={productInputs} title='Add New Hotel' />
+                    <NewHotel />
                   </ProtectedRoute>
                 }
               />
@@ -114,7 +116,7 @@ function App() {
                 path='new'
                 element={
                   <ProtectedRoute>
-                    <New inputs={productInputs} title='Add New Room' />
+                    <NewRoom />
                   </ProtectedRoute>
                 }
               />

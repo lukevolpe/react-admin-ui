@@ -53,7 +53,7 @@ const Datatable = ({ columns, title }) => {
     <div className='datatable'>
       <div className='datatableTitle'>
         {title}
-        <Link to='/users/new' className='link'>
+        <Link to={`http://localhost:5173${path}/new`} className='link'>
           Add new
         </Link>
       </div>

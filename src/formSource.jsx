@@ -92,7 +92,7 @@ export const hotelInputs = [
     id: 'type',
     label: 'Type',
     type: 'text',
-    placeholder: 'hotel',
+    placeholder: 'Hotel',
   },
   {
     id: 'city',
@@ -104,7 +104,7 @@ export const hotelInputs = [
     id: 'address',
     label: 'Address',
     type: 'text',
-    placeholder: 'elton st, 216',
+    placeholder: 'Elton st, 216',
   },
   {
     id: 'distance',
@@ -119,10 +119,10 @@ export const hotelInputs = [
     placeholder: 'The best Hotel',
   },
   {
-    id: 'desc',
+    id: 'description',
     label: 'Description',
     type: 'text',
-    placeholder: 'description',
+    placeholder: 'Description',
   },
   {
     id: 'cheapestPrice',
@@ -140,7 +140,7 @@ export const roomInputs = [
     placeholder: '2 bed room',
   },
   {
-    id: 'desc',
+    id: 'description',
     label: 'Description',
     type: 'text',
     placeholder: 'King size bed, 1 bathroom',
