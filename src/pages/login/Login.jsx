@@ -41,6 +41,7 @@ const Login = () => {
   return (
     <div className='login'>
       <div className='loginContainer'>
+        <h1>Login to your account</h1>
         <input
           type='text'
           id='username'

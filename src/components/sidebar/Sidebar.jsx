@@ -1,22 +1,25 @@
 import './sidebar.scss';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
-import InventoryIcon from '@mui/icons-material/Inventory';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import QueryStatsIcon from '@mui/icons-material/QueryStats';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
-import TextSnippetIcon from '@mui/icons-material/TextSnippet';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import BedIcon from '@mui/icons-material/Bed';
+import HotelIcon from '@mui/icons-material/Hotel';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../context/DarkModeContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const Sidebar = () => {
-  const { dispatch } = useContext(DarkModeContext);
+  const { dmDispatch } = useContext(DarkModeContext);
+  const { loading, error, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch({ user: null });
+    localStorage.removeItem('user');
+    navigate('/login');
+    alert('You have been logged out');
+  };
 
   return (
     <div className='sidebar'>
@@ -44,17 +47,17 @@ const Sidebar = () => {
           </Link>
           <Link to='/hotels' style={{ textDecoration: 'none' }}>
             <li>
-              <InventoryIcon className='icon' />
+              <HotelIcon className='icon' />
               <span>Hotels</span>
             </li>
           </Link>
           <Link to='/rooms' style={{ textDecoration: 'none' }}>
             <li>
-              <InventoryIcon className='icon' />
+              <BedIcon className='icon' />
               <span>Rooms</span>
             </li>
           </Link>
-          <li>
+          <li onClick={handleLogout}>
             <LogoutIcon className='icon' />
             <span>Log out</span>
           </li>
@@ -63,11 +66,11 @@ const Sidebar = () => {
       <div className='bottom'>
         <div
           className='colourOption'
-          onClick={() => dispatch({ type: 'LIGHT' })}
+          onClick={() => dmDispatch({ type: 'LIGHT' })}
         ></div>
         <div
           className='colourOption'
-          onClick={() => dispatch({ type: 'DARK' })}
+          onClick={() => dmDispatch({ type: 'DARK' })}
         ></div>
       </div>
     </div>
